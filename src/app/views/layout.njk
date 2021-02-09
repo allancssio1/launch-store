@@ -13,23 +13,8 @@
 
   </head>
   <body>
-    {% block header %}
-      <header class="grid_header">
-        <nav class="navegacao">
-          <a href="/" class="foodfy">
-            <img src="/logo.png" alt="logo foodfy"/>
-          </a>
-          <a href="/about">Sobre</a>
-          <a href="/recipes">Receitas</a>
-          <a href="/chefs">Chefs</a>
-        </nav>
-        {% block filter %}{% endblock  %}
-      </header>
-    {% endblock %}
+    {% include 'parts/header.njk' %}
     {% block content %}{% endblock %}
-    <footer>
-      <h3>Todos direitos reservados, receitas Foodfy.</h3>
-    </footer>
-    <script src="/script.js"></script>
+    {% include 'parts/footer.njk' %}
   </body>
 </html>
