@@ -13,7 +13,7 @@ module.exports = {
         quantity,
         status
       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-      RETURNING ID`
+      RETURNING id`
     data.price = data.price.replace(/\D/g, "")
     const values = [
       data.category_id,
