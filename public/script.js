@@ -45,7 +45,7 @@ const PhotosUpload = {
       event.preventDefault()
       return true
     }
-    const photosDiv = []
+    let photosDiv = []
     preview.childNodes.forEach(item => {
       if(item.classList && item.classList.value == "photo")
         photosDiv.push(item)
