@@ -11,10 +11,6 @@
   "keywords": [],
   "author": "Allan Cássio",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/allancssio1/bootcamp-LaunchBase-Foodfy/issues"
-  },
-  "homepage": "https://github.com/allancssio1/bootcamp-LaunchBase-Foodfy#readme",
   "dependencies": {
     "express": "^4.17.1",
     "method-override": "^3.0.0",
