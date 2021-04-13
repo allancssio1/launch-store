@@ -1,13 +1,18 @@
 module.exports = {
   date: timestemp => {
-    const date = new Date(timestemp)
-    const year = date.getUTCFullYear()
-    const month = `0${date.getUTCMonth() + 1}`.slice(-2)
-    const day = `0${date.getUTCDate()}`.slice(-2)
+    const date = new Date(timestemp),
+     year = date.getFullYear(),
+     month = `0${date.getMonth() + 1}`.slice(-2),
+     day = `0${date.getDate()}`.slice(-2),
+     hour = date.getHours(),
+     minutes = date.getMinutes()
+     
     return {
       day,
       month,
       year,
+      hour,
+      minutes,
       iso: `${year}-${month}-${day}`
     }
   },
