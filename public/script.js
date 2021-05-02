@@ -26,13 +26,15 @@ const PhotosUpload = {
     Array.from(fileList).forEach(file   => {
       PhotosUpload.files.push(file)
       const reader = new FileReader()
+
       reader.onload = () => {
-        //Constructor que cria imagem, como se fosse o createElement(img)
-        const image = new Image() 
+        const image = new Image() //Constructor que cria imagem, como se fosse o createElement(img)
         image.src = String(reader.result)
+
         const div = PhotosUpload.getContainer(image)
         PhotosUpload.preview.appendChild(div)
       }
+
       reader.readAsDataURL(file)
     })
     PhotosUpload.input.files = PhotosUpload.getAllFiles()
