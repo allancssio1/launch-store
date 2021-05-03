@@ -54,7 +54,7 @@ const PhotosUpload = {
     })
     const totalPhotos = fileList.length + photosDiv.length
     if (totalPhotos > uploadLimit) {
-      alert(`Você atingil o limite máximo de fotos.`)
+      alert(`Você atingiu o limite máximo de fotos.`)
       event.preventDefault()
       return true
     }
@@ -69,7 +69,7 @@ const PhotosUpload = {
     //Div que vai ser gerado como lista para armazenar cada foto carregada.
     const div = document.createElement('div')
     div.classList.add('photo')
-    div.onclick = PhotosUpload.removePhoto
+    div.onclick = PhotosUpload.removePhoto()
     div.appendChild(image)
     div.appendChild(PhotosUpload.getRemoveButton())
     return div
