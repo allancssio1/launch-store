@@ -21,7 +21,10 @@ const PhotosUpload = {
   handleFileInput(event){
     const {files: fileList} = event.target
     PhotosUpload.input = event.target
-    if(PhotosUpload.hasLimit(event)) return
+    if(PhotosUpload.hasLimit(event)) {
+      PhotosUpload.updateUploadFiles()
+      return
+    }
     
     Array.from(fileList).forEach(file   => {
       PhotosUpload.files.push(file)
@@ -37,7 +40,7 @@ const PhotosUpload = {
 
       reader.readAsDataURL(file)
     })
-    PhotosUpload.input.files = PhotosUpload.getAllFiles()
+    PhotosUpload.updateUploadFiles()
   },
   hasLimit(event){
     const {uploadLimit, input, preview} = PhotosUpload
@@ -61,17 +64,21 @@ const PhotosUpload = {
     return false
   },
   getAllFiles(){
-    const dataTrasnfer = new ClipboardEvent("").clipboardData || new DataTransfer()
-    PhotosUpload.files.forEach(file => dataTrasnfer.items.add(file))
-    return dataTrasnfer.files
+    const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
+
+    PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
+
+    return dataTransfer.files
   },
   getContainer(image) {
     //Div que vai ser gerado como lista para armazenar cada foto carregada.
     const div = document.createElement('div')
+
     div.classList.add('photo')
-    div.onclick = PhotosUpload.removePhoto()
+    div.onclick = PhotosUpload.removePhoto
     div.appendChild(image)
     div.appendChild(PhotosUpload.getRemoveButton())
+
     return div
   },
   getRemoveButton() {
@@ -86,10 +93,9 @@ const PhotosUpload = {
     const index = photosArray.indexOf(photoDiv)
     //splice vai remover o item no index informado e somente ele 
     PhotosUpload.files.splice(index, 1)
-    PhotosUpload.input.files = PhotosUpload.getAllFiles()
+    PhotosUpload.updateUploadFiles()
 
     photoDiv.remove()
-  
   },
   removeOldPhoto(event) {
     const photoDiv = event.target.parentNode 
@@ -101,6 +107,10 @@ const PhotosUpload = {
       }
     }
     photoDiv.remove()
+  },
+  updateUploadFiles() {
+
+    PhotosUpload.input.files = PhotosUpload.getAllFiles()
   }
 
 }
