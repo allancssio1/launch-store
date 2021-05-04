@@ -74,8 +74,8 @@ const PhotosUpload = {
     //Div que vai ser gerado como lista para armazenar cada foto carregada.
     const div = document.createElement('div')
 
-    div.classList.add('photo')
-    div.onclick = PhotosUpload.removePhoto
+    div.classList.add('photo') //Adiciona a class photo na div creada
+    div.onclick = PhotosUpload.removePhoto //põe um evento de clique na div
     div.appendChild(image)
     div.appendChild(PhotosUpload.getRemoveButton())
 
@@ -88,11 +88,15 @@ const PhotosUpload = {
     return button
   },
   removePhoto(event) {
-    const photoDiv = event.target.parentNode //<div class="photo">
-    const photosArray = Array.from(PhotosUpload.preview.children)
-    const index = photosArray.indexOf(photoDiv)
-    //splice vai remover o item no index informado e somente ele 
-    PhotosUpload.files.splice(index, 1)
+    const photoDiv = event.target.parentNode //<div class="photo"> 
+    
+    const photosArray = Array.from(PhotosUpload.preview.children) // transforma em array as photos filhas de .photos-preview
+    const newFiles = photosArray.filter(file => {
+      if (file.classList.contains('photo') && !file.getAttribute('id')) return true
+    })
+    const index = newFiles.indexOf(photoDiv) //pega a posição do array em que houve o click de delete.
+    PhotosUpload.files.splice(index, 1) //splice vai remover o item no index informado e somente ele 
+
     PhotosUpload.updateUploadFiles()
 
     photoDiv.remove()
@@ -110,7 +114,7 @@ const PhotosUpload = {
   },
   updateUploadFiles() {
 
-    PhotosUpload.input.files = PhotosUpload.getAllFiles()
+    PhotosUpload.input.files = PhotosUpload.getAllFiles() //atualiza os arquivos do input file.
   }
 
 }
