@@ -27,8 +27,13 @@ module.exports = {
     
     let results = await Product.create(req.body)
     const productId = results.rows[0].id
-    
-    const filesPromise = req.files.map(file => File.create({...file, product_id: productId}))
+
+    req.files.map(file => console.log(file.path))
+
+    const filesPromise = req.files.map(file => File.create({
+      ...file,
+      product_id: productId
+    }))
     await Promise.all(filesPromise)
     
     return res.redirect(`/products/${productId}`)
