@@ -279,6 +279,9 @@ form .item #photos-preview img{
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2px;
 }
+.product-single .gallery-preview div {
+  height: 100px;
+}
 .product-single .gallery-preview img {
   height: 100%;
   width: 100%;
@@ -391,7 +394,20 @@ form .item #photos-preview img{
 .shop .product .image {
   padding-top: 56.25%;
 
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.shop .items h4 {
+  margin: 8px 0;
+  font-weight: 300;
+  color: #999;
+}
+
+.shop .items p{
+  color: #101010;
+  font-weight: 300;
+  font-size: 24px;
+  margin-top: 24px;
 }

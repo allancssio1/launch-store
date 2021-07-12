@@ -22,6 +22,7 @@
       </div>
       <div class="gallery-preview">
       {% for image in files %}
+      <div>
         <img
           src="{{image.src}}"
           alt="{{image.name}}"
@@ -30,7 +31,7 @@
           {% endif %} 
           onclick="ImageGallery.setImage(event)"
           />
-
+      </div>
       {% endfor %}
       </div>
     </div>
