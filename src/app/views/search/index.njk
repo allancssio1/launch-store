@@ -2,29 +2,25 @@
 
 {% block content %}
 
-<section class="shop container">
-  <h2>Ultimos Produtos</h2>
+<section class="search-products container">
 
-  <div class="items">
-    {% for product in products %}
-    <div class="product">
-
-      <div class="image"
-        style="background-image: url('{{product.img if product.img else '//placehold.it/500x360'}}')"
-      >
-      </div>
-
-      {% if product.oldPrice != product.old_price %}
-        <div class="old-price">{{product.oldPrice}}</div>
-      {% endif %}
-      <p>{{product.price}}</p>
-      <h4>{{product.name}}</h4>
-
-      <a href="/products/{{product.id}}" class="button">Ver Produto</a>
+  <aside>
+    <div class="header">
+      <h2>Computador</h2>
+      <p>12 encontrados</p>
     </div>
 
-    {% endfor %}
-  </div>
+    <nav class="categories">
+      <h4>Categorias</h4>
+      <ul>
+        <li><a href="#">Eletrônicos</a></li>
+        <li><a href="#">Alimentos</a></li>
+      </ul>
+    </nav>
+
+  </aside>
+
+
 </section>
 
 {% endblock %}
