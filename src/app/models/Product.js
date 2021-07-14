@@ -68,7 +68,7 @@ module.exports = {
   files(id) {
     return db.query(`SELECT * FROM files WHERE product_id = $1`, [id])
   },
-  search (params) {
+   search (params) {
     const {filter, category} = params
 
     let query = "",
@@ -88,18 +88,13 @@ module.exports = {
       OR products.description ILIKE '%${filter}%'
     `
 
-     let total_query = `(
-       SELECT count(*) FROM products
-       ${filterQuery}
-     ) AS total`
-
      query = `
-      SELECT products.*, ${total_query},
+      SELECT products.*, 
       categories.name AS category_name
       FROM products
       LEFT JOIN categories ON (categories.id = products.category_id)
       ${filterQuery}
-      GROUP BY products.id, categories.name
+      GROUP BY categories.name
      `
 
      return db.query(query)
