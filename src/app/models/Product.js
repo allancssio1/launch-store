@@ -98,8 +98,5 @@ module.exports = {
      `
 
      return db.query(query)
-     
-     
-     
   }
 }
