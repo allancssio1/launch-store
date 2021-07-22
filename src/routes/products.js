@@ -1,8 +1,11 @@
 const express = require('express')
 const routes = express.Router()
-const multer = require('./app/middlewares/multer')
 
-const ProductsController = require('./app/controllers/ProductsController')
+const multer = require('../app/middlewares/multer')
+
+const ProductsController = require('../app/controllers/ProductsController')
+const SearchController = require('../app/controllers/SearchController')
+
 routes.get('/search', SearchController.index)
 
 routes.get('/create', ProductsController.create)
