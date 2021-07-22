@@ -6,6 +6,12 @@ const ProductsController = require('./app/controllers/ProductsController')
 const HomeController = require('./app/controllers/HomeController')
 const SearchController = require('./app/controllers/SearchController')
 
+const users = require('./users')
+const products = require('./products')
+
+routes.use('/users', users)
+routes.use('/products', users)
+
 routes.get('/', HomeController.index)
 
 routes.get('/products/search', SearchController.index)
@@ -22,25 +28,7 @@ routes.get('/ads/create', function (req, res) {
   return res.redirect("/products/create")
 })
 
-// login/logout
 
-routes.get('/login', SessionController.loginForm)
-routes.post('/login', SessionController.login)
-routes.post('/logout', SessionController.logout)
-
-// reset password / forgot
-routes.get('/forgot-password', SessionController.forgotForm)
-routes.get('/password-reset', SessionController.resetForm)
-routes.post('/forgot-password', SessionController.forgot)
-routes.post('/password-reset', SessionController.reset)
-
-// user register UserController
-routes.get('/register', UserController.registerForm)
-routes.post('/register', UserController.post)
-
-routes.get('/', UserController.show)
-routes.put('/', UserController.update)
-routes.delete('/', UserController.delete)
 
 
 
