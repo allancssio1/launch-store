@@ -1,0 +1,52 @@
+<div class="item">
+  <div>Nome</div>
+  <div>
+    <input type="text" name="name" placeholder="Nome completo" value="{{user.name}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>E-mail</div>
+  <div>
+    <input type="email" name="email" placeholder="E-mail" value="{{user.email}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Senha</div>
+  <div>
+    <input type="password" name="password" placeholder="Digite uma senha" value="{{user.password}}">
+  </div>
+</div>
+
+{% if not user.id %}
+
+  <div class="item">
+    <div>Repita a senha</div>
+    <div>
+      <input type="password" name="passwordRepeat" placeholder="senha">
+    </div>
+  </div>
+
+{% endif %}
+
+<div class="item">
+  <div>CPF ou CNPJ</div>
+  <div>
+    <input type="text" name="cpf_cnpj" placeholder="Somente números" value="{{user.cpf_cnpj}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Cep</div>
+  <div>
+    <input type="text" name="cep" placeholder="99999-999" value="{{user.cep}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Endereço</div>
+  <div>
+    <input type="text" name="address" placeholder="Digite a rua ou avenida" value="{{user.address}}">
+  </div>
+</div>
