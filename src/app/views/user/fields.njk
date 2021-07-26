@@ -8,7 +8,13 @@
 <div class="item">
   <div>E-mail</div>
   <div class="input">
-    <input type="email" name="email" placeholder="E-mail" value="{{user.email}}">
+    <input
+      type="email"
+      name="email"
+      placeholder="E-mail"
+      value="{{user.email}}"
+      onblur="Validate.apply(this, 'isEmail')"
+      >
   </div>
 </div>
 

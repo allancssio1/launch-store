@@ -198,3 +198,28 @@ const Lightbox = {
     Lightbox.closeButton.style.top = '-80px'
   }
 }
+
+const Validate = {
+  apply(input, func) {
+    let results = Validate[func](input.value)
+    input.value = results.value
+
+    if (result.error)
+      alert("ERROU!")
+
+  },
+  isEmail(value) {
+    let error = null
+
+    /* ^ => obrigação inicial
+    * \w => caractéries
+    * + => 1 ou mais
+    * ? => não é certeza vir a informação
+    * \simbolos em qualquer serquência => síbolos que será permitido usar.
+    */
+
+    const mailFormat = /^\w+([\.-]?)/
+
+    return { error, value }
+  }
+}
