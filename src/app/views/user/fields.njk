@@ -45,6 +45,7 @@
       placeholder="Somente números"
       value="{{user.cpf_cnpj}}"
       onkeydown="Mask.apply(this, 'cpfCnpj')"  
+      onblur="Validate.apply(this, 'isCpfCnpj')"
     >
   </div>
 </div>
@@ -58,6 +59,7 @@
       placeholder="99999-999"
       value="{{user.cep}}"
       onkeydown="Mask.apply(this, 'cep')"
+      onblur="Validate.apply(this, 'isCep')"
     >
   </div>
 </div>
