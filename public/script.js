@@ -201,12 +201,31 @@ const Lightbox = {
 
 const Validate = {
   apply(input, func) {
+    Validate.clearErrors(input)
+    
     let results = Validate[func](input.value)
     input.value = results.value
+    
+    if (results.error)
+      Validate.displayError(input, results.error)
 
-    if (result.error)
-      alert("ERROU!")
+  },
+  clearErrors(input) {
+    const errorDiv = input.parentNode.querySelector('.error')
+    if (errorDiv){
+      errorDiv.remove()
 
+    }
+  },
+  displayError(input, error) {
+    const div = document.createElement('div')
+
+    div.classList.add('error')
+    div.innerHTML = error
+
+    input.parentNode.appendChild(div)
+
+    input.focus
   },
   isEmail(value) {
     let error = null
@@ -216,9 +235,13 @@ const Validate = {
     * + => 1 ou mais
     * ? => não é certeza vir a informação
     * \simbolos em qualquer serquência => síbolos que será permitido usar.
+    * () => agrupar informação antes de uma alteração.
     */
 
-    const mailFormat = /^\w+([\.-]?)/
+    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+    if(!value.match(mailFormat))
+      error = 'Email inválido'
 
     return { error, value }
   }
