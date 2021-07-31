@@ -461,10 +461,17 @@ form .item #photos-preview img{
   max-width: 500px;
 }
 
-.form input[name="passwordRepeat"],
+/* .form input[name="passwordRepeat"],
 .form input[name="cep"],
 .form input[name="email"],
 .form input[name="cpf_cnpj"],
 .form input[name="password"] {
   max-width: 50%;
+} */
+
+.input .error {
+  background-color: #e74c3c;
+  padding: 4px;
+  border-radius: 4px;
+  color: #fff;
 }
