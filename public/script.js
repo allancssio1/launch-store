@@ -244,5 +244,27 @@ const Validate = {
       error = 'Email inválido'
 
     return { error, value }
+  },
+  isCpfCnpj(value) {
+    let error = null
+    const clearValues = value.replace(/\D/, "")
+
+    if (clearValues.length > 11 && clearValues !== 14) {
+      error = "CNPJ incorreto"
+    } else if (clearValues.length < 12 && clearValues.length !== 11) {
+      error = "CPF incorreto"
+    }
+    return {error, value}
+  },
+  isCep(value) {
+    let error = null
+
+    const clearValues = value.replace(/\D/, "")
+
+    if (clearValues !== 8) {
+      error = "Cep incorreto"
+    }
+
+    return {error, value}
   }
 }
