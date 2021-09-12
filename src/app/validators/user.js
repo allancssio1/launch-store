@@ -4,7 +4,7 @@ async function post(req, res, next) {
   const keys = Object.keys(req.body)
 
     for (key of keys) {
-      if (req.body[key] == "")
+      if (req.body[key] === "")
         return res.render("user/register", {
           user: req.body,
           error: 'Preencha todos os dados.'
@@ -25,10 +25,12 @@ async function post(req, res, next) {
       error: 'Usuário já existe.'
     })
 
-    if (password != passwordRepeat) return res.render("user/register", {
-      user: req.body,
-      error: 'Senha não são indênticas.'
-    })
+    if (password !== passwordRepeat) {
+      return res.render("user/register", {
+        user: req.body,
+        error: 'Senha não são indênticas.'
+      })
+    }
 
     next()
 }
