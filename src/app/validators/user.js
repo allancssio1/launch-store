@@ -17,10 +17,10 @@ async function post(req, res, next) {
       OR: { cpf_cnpj }
     })
 
-    // console.log(user)
-    
-
-    if(user) return res.send("usuário já existe")
+    if(user) return res.render("user/register", {
+      user: req.body,
+      error: 'Usuário já existe.'
+    })
 
     if (password != passwordRepeat) return res.send("senhas não são idênticas")
 
