@@ -5,7 +5,10 @@ async function post(req, res, next) {
 
     for (key of keys) {
       if (req.body[key] == "")
-        return res.send('Please, fill all fields!')
+        return res.render("user/register", {
+          user: req.body,
+          error: 'Preencha todos os dados.'
+        })
     }
 
     let { email, cpf_cnpj, password, passwordRepeat } = req.body
@@ -22,7 +25,10 @@ async function post(req, res, next) {
       error: 'Usuário já existe.'
     })
 
-    if (password != passwordRepeat) return res.send("senhas não são idênticas")
+    if (password != passwordRepeat) return res.render("user/register", {
+      user: req.body,
+      error: 'Senha não são indênticas.'
+    })
 
     next()
 }
