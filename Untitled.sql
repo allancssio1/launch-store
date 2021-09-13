@@ -67,6 +67,16 @@ BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 
+-- CONNECT PG-SINPLE para constrole de conectividade do usuário
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "express" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+
 -- CATEGORIAS PRE CADASTRADAS
 INSERT INTO  categories(name) VALUES ('Alimento');
 INSERT INTO  categories(name) VALUES ('Eletrônicos');
