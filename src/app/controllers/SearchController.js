@@ -56,7 +56,7 @@ module.exports = {
       
     } catch (error) {
   
-      console.error(error)
+      console.error("SearchController index",error)
 
     }
     

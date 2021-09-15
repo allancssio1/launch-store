@@ -55,7 +55,7 @@ module.exports = {
 
       return results.rows[0]
     } catch (error) {
-      console.error(error)
+      console.error("Models/User create()", error)
     }
 
   }
