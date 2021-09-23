@@ -8,9 +8,7 @@ module.exports = {
   async show(req, res) {
     const {userId: id} = req.session
 
-    const user = await User.findOne({
-      where: {id},
-    })
+    const user = await User.findOne({ where: {id} })
     console.log("aqui ==>", user)
 
     if(!user) return res.render("user/register", {
@@ -19,8 +17,8 @@ module.exports = {
     console.log("aqui ==>!!", user)
 
 
-    // user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
-    // user.cep = formatCep(user.cep)
+    user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
+    user.cep = formatCep(user.cep)
     return res.render('user/index', {user})
   }
   ,
