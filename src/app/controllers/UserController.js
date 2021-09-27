@@ -9,13 +9,10 @@ module.exports = {
     const {userId: id} = req.session
 
     const user = await User.findOne({ where: {id} })
-    console.log("aqui ==>", user)
 
     if(!user) return res.render("user/register", {
       error: 'Usuário não encontrado!'
     })
-    console.log("aqui ==>!!", user)
-
 
     user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
     user.cep = formatCep(user.cep)

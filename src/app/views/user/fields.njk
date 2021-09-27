@@ -21,7 +21,15 @@
 <div class="item">
   <div>Senha</div>
   <div class="input">
-    <input type="password" name="password" placeholder="Digite uma senha">
+    <input 
+      type="password" 
+      name="password" 
+      {% if not user.id %}
+       placeholder="Alterar senha"
+      {% else %}
+       placeholder="Digite uma senha"
+      {% endif %}
+    >
   </div>
 </div>
 

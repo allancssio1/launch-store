@@ -53,7 +53,7 @@ module.exports = {
 
       const results = await db.query(query, values)
 
-      return results.rows[0]
+      return results.rows[0].id
     } catch (error) {
       console.error("Models/User create()", error)
     }
